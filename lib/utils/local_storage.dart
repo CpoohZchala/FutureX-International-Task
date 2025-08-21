@@ -20,7 +20,6 @@ class Storage {
     await prefs.remove(userIdKey);
   }
 
-  // User ID එක terminal එකට print කිරීම
   static Future<void> printUserId() async {
     try {
       final prefs = await SharedPreferences.getInstance();
@@ -36,18 +35,15 @@ class Storage {
     }
   }
 
-  // User data save කිරීම 
   static Future<void> saveUserData(Map<String, dynamic> userData) async {
     try {
       final prefs = await SharedPreferences.getInstance();
       final userId = userData['userid'];
       
-      // User ID save කිරීම
       if (userId != null) {
         await prefs.setInt(userIdKey, userId);
       }
       
-      // User data JSON String ලෙස save කිරීම
       final userDataJson = json.encode(userData);
       await prefs.setString(userDataKey, userDataJson);
       
@@ -73,7 +69,6 @@ class Storage {
     }
   }
   
-  // Old keys cleanup කිරීම
 static Future<void> cleanupOldKeys() async {
   try {
     final prefs = await SharedPreferences.getInstance();
@@ -87,7 +82,6 @@ static Future<void> cleanupOldKeys() async {
   }
 }
 
-  // User data clear කිරීම
   static Future<void> clearUserData() async {
     try {
       final prefs = await SharedPreferences.getInstance();
@@ -120,7 +114,6 @@ static Future<void> cleanupOldKeys() async {
     }
   }
 
-  // Specific user ID එකක් තිබේදැයි check කිරීම
   static Future<bool> hasUserId(int userId) async {
     try {
       final prefs = await SharedPreferences.getInstance();

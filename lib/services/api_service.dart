@@ -5,24 +5,30 @@ class ApiService {
   static const String baseUrl = 'https://futurex.lk/api';
 
   static Future<Map<String, dynamic>> checkStatus(int userId) async {
-    try {
-      final response = await http.post(
-        Uri.parse('$baseUrl/checkstatus.php'),
-        headers: {'Content-Type': 'application/json'},
-        body: json.encode({'userid': userId}),
-      );
+  try {
+    print('📞 Calling checkstatus.php with userid: $userId');
+    
+    final response = await http.post(
+      Uri.parse('$baseUrl/checkstatus.php'),
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({'userid': userId}),
+    );
 
-      if (response.statusCode == 200) {
-        return json.decode(response.body);
-      } else {
-        throw Exception('Failed to check status. Status code: ${response.statusCode}');
-      }
-    } catch (e) {
-      print('❌ API Error - checkStatus: $e');
-      rethrow;
+    print('📥 Response status code: ${response.statusCode}');
+    print('📥 Response body: ${response.body}');
+    
+    if (response.statusCode == 200) {
+      final responseData = json.decode(response.body);
+      print('✅ Check Status Response: $responseData');
+      return responseData;
+    } else {
+      throw Exception('Failed to check status. Status code: ${response.statusCode}');
     }
+  } catch (e) {
+    print('❌ API Error - checkStatus: $e');
+    rethrow;
   }
-
+}
   static Future<Map<String, dynamic>> login(String email, String password) async {
     try {
       final response = await http.post(
@@ -73,7 +79,6 @@ class ApiService {
   // Optional: Method to get user details by ID
   static Future<Map<String, dynamic>> getUserDetails(int userId) async {
     try {
-      // This endpoint would need to be created on the server
       final response = await http.post(
         Uri.parse('$baseUrl/getuser.php'),
         headers: {'Content-Type': 'application/json'},
