@@ -48,14 +48,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
       return;
     }
     
-    // If not in local storage, try to fetch from API
     try {
-      // In a real app, we would call an API endpoint to get user details
-      // For this demo, we'll simulate an API call with a delay
+    
       await Future.delayed(const Duration(seconds: 1));
       
-      // Simulated API response - in production, replace with actual API call
-      // For example: final response = await ApiService.getUserDetails(widget.userId);
+     
       setState(() {
         _userData = {
           'userid': widget.userId,
@@ -197,42 +194,44 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       const SizedBox(height: 16),
                       
                       // User Info Card
-                      Card(
-                        elevation: 4,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            children: [
-                              _buildInfoRow(
-                                icon: Icons.person,
-                                label: 'User ID',
-                                value: _userData!['userid'].toString(),
-                              ),
-                              const Divider(),
-                              _buildInfoRow(
-                                icon: Icons.badge,
-                                label: 'Username',
-                                value: _userData!['username'],
-                              ),
-                              const Divider(),
-                              _buildInfoRow(
-                                icon: Icons.email,
-                                label: 'Email',
-                                value: _userData!['email'],
-                              ),
-                              const Divider(),
-                              _buildInfoRow(
-                                icon: Icons.phone,
-                                label: 'Phone',
-                                value: _userData!['phone'],
-                              ),
-                            ],
+                      
+                        Card(
+                          elevation: 4,
+                          color: const Color.fromARGB(255, 3, 23, 40), // Light blue background
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Column(
+                              children: [
+                                _buildInfoRow(
+                                  icon: Icons.person,
+                                  label: 'User ID',
+                                  value: _userData!['userid'].toString(),
+                                ),
+                                const Divider(),
+                                _buildInfoRow(
+                                  icon: Icons.badge,
+                                  label: 'Username',
+                                  value: _userData!['username'],
+                                ),
+                                const Divider(),
+                                _buildInfoRow(
+                                  icon: Icons.email,
+                                  label: 'Email',
+                                  value: _userData!['email'],
+                                ),
+                                const Divider(),
+                                _buildInfoRow(
+                                  icon: Icons.phone,
+                                  label: 'Phone',
+                                  value: _userData!['phone'],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
                       
                       
                       // Debug Section
@@ -262,6 +261,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 onPressed: () async {
                                   await Storage.printUserId();
                                 },
+                                style: ElevatedButton.styleFrom(
+                                            backgroundColor: const Color.fromARGB(255, 2, 11, 18),
+                                          ),
                                 child: const Text('Print User ID to Console'),
                               ),
                             ],
@@ -310,6 +312,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 Text(
                   label,
                   style: const TextStyle(
+                    color:Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                   ),
@@ -319,7 +322,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   value,
                   style: const TextStyle(
                     fontSize: 16,
-                    color: Colors.blueGrey,
+                    color: Color.fromARGB(255, 119, 157, 180),
                   ),
                 ),
               ],
@@ -348,7 +351,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              Icon(icon, size: 32, color: color),
+              Icon(icon, size: 30, color: color),
               const SizedBox(height: 8),
               Text(
                 title,
