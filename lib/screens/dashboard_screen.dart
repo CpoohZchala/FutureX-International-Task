@@ -151,7 +151,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Welcome Header
                       Container(
                         width: double.infinity,
                         padding: const EdgeInsets.all(20),
@@ -194,7 +193,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       const SizedBox(height: 16),
                       
                       // User Info Card
-                      
                         Card(
                           elevation: 4,
                           color: const Color.fromARGB(255, 3, 23, 40), // Light blue background
