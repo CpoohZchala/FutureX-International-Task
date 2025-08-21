@@ -262,6 +262,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 onPressed: () async {
                                   await Storage.printUserId();
                                 },
+                                style: ElevatedButton.styleFrom(
+                                            backgroundColor: const Color.fromARGB(255, 2, 11, 18),
+                                          ),
                                 child: const Text('Print User ID to Console'),
                               ),
                             ],

@@ -72,6 +72,20 @@ class Storage {
       return null;
     }
   }
+  
+  // Old keys cleanup කිරීම
+static Future<void> cleanupOldKeys() async {
+  try {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('userid'); 
+    await prefs.remove('userId'); 
+    await prefs.remove('user');   
+    
+    print('✅ Cleaned up old storage keys');
+  } catch (e) {
+    print('❌ Error cleaning up old keys: $e');
+  }
+}
 
   // User data clear කිරීම
   static Future<void> clearUserData() async {
@@ -118,3 +132,5 @@ class Storage {
     }
   }
 }
+
+
