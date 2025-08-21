@@ -77,17 +77,20 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Sign Up',style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),)),
+      appBar: AppBar(
+        title: const Text('Sign Up',style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)
+        ,),
+        backgroundColor: const Color.fromARGB(255, 3, 23, 40),
+        foregroundColor: Colors.amber,
+        ),
       body: Stack(
         children: [
-          Positioned.fill(
-            child: Image.network(
-              'https://wallpapercave.com/wp/wp11479831.png',
-              fit: BoxFit.cover,
-            ),
+           Positioned.fill(
+            child: Image.asset('assets/background.png', fit: BoxFit.cover),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
+            
             child: Form(
               key: _formKey,
               child: Column(
@@ -215,7 +218,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                         child: ElevatedButton(
                                           onPressed: _signup,
                                           style: ElevatedButton.styleFrom(
-                                            backgroundColor: const Color.fromARGB(255, 2, 11, 18),
+                                            backgroundColor: const Color.fromARGB(255, 3, 23, 40),
                                           ),
                                           child: const Text(
                                             'Sign Up',

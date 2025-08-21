@@ -74,20 +74,18 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber,
       appBar: AppBar(
         title: const Text(
           'Sign In',
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
         ),
+        backgroundColor: const Color.fromARGB(255, 3, 23, 40),
+        foregroundColor: Colors.amber,
       ),
       body: Stack(
         children: [
           Positioned.fill(
-            child: Image.network(
-              'https://wallpapercave.com/wp/wp11479831.png',
-              fit: BoxFit.cover,
-            ),
+            child: Image.asset('assets/background.png', fit: BoxFit.cover),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -173,9 +171,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             style: ElevatedButton.styleFrom(
                               backgroundColor: const Color.fromARGB(
                                 255,
-                                2,
-                                11,
-                                18,
+                                3,
+                                23,
+                                40,
                               ),
                             ),
                             child: const Text(
@@ -200,7 +198,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                     child: const Text(
                       'Don\'t have an account? Sign Up',
-                      style: TextStyle(fontSize: 14, color: Color.fromARGB(255, 76, 75, 75)),
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Color.fromARGB(255, 76, 75, 75),
+                      ),
                     ),
                   ),
                 ],
